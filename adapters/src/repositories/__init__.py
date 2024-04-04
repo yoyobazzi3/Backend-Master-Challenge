@@ -5,4 +5,3 @@ from .sql import (
   ProductSchema,
   SQLProductRepository
 )
-from .memory import MemoryProductRepository

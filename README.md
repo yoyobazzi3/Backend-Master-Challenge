@@ -4,11 +4,7 @@
 
 After understanding the business rules, one of the next steps for the design of a backend application is the design of the data structure that will contain the persistent information of the system. In this case it has been decided to use a relational database. You can see the Entity Relationship Diagram below.
 
-![ERD Diagram](./documentation/ERD.png)
-
-You can also refer to the Hand-on Database ERD video, which explains the making of this diagram.
-
-[Hand-on Database ERD](https://www.notion.so/ioet/Hands-on-Database-ERD-9118e93dffee48f69e987968f7fa350d)
+![ERD Diagram](./docs/db/ERD.png)
 
 ## App structure
 
@@ -104,3 +100,73 @@ make win_start
 ```
 
 Once the app ir running you can access the the self documented API endpoint in the next URL: http://localhost:8000/docs/
+
+
+## Challenge Tasks
+
+### 1 Create an endpoint to delete a product
+
+#### Description
+
+It is necessary to implement an entry point to delete the information of a previously existing product.
+
+For this implementation, a route must be created inside products_routes.py and this route will use its use case and its request and response methods (inside the file requests and responses, respectively).
+
+The attributes that will have a product are defined in the ER Diagram
+
+#### Acceptance criteria
+
+A product that previously exists should be removed from the database.
+
+### 2 Create an endpoint to edit a product
+
+#### Description
+
+It is necessary to implement an entry point to change the information of a previously existing product.
+
+For this implementation, a route must be created inside products_routes.py and this route will use its use case and its request and response methods (inside the file requests and responses, respectively).
+
+The attributes that will have a product are defined in the ER Diagram
+
+#### Acceptance criteria
+
+A product should be saved in the database and the following attributes can be changed:
+
+- UserID
+- Name
+- Description
+- Price
+- Location
+- Status
+- isAvailable
+
+### 3 Create an endpoint to filter a product
+
+#### Description
+
+It is necessary to implement an entry point to filter products by the following status:
+
+- New
+- Used
+- For parts
+
+For this implementation, a route must be created inside products_routes.py and this route will use its use case and its request and response methods (inside the file requests and responses, respectively).
+
+The products will be filtered by the “status” attribute defined in the ERD.
+
+#### Acceptance criteria
+
+The endpoint retrieves all the products that match a specific status.
+
+### 4 Add tests for the product routes
+
+#### Description
+
+Add test for the enpoints created in the products_routes.py file.
+
+### 5 Add tests for the product use_cases
+
+#### Description
+
+Add test for the product use_cases created in the app/src/usecases/product/"method" folder.
+

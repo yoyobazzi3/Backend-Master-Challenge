@@ -1,1 +1,0 @@
-from .memory_product_repository import MemoryProductRepository

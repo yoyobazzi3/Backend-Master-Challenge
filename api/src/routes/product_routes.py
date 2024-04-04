@@ -32,9 +32,11 @@ product_router = APIRouter(prefix="/products")
 async def get_products(
     use_case: ListProducts = Depends(list_product_use_case)
 ) -> ListProductResponse:
-    response = use_case()
+    response_list = use_case()
+    response = [{**product._asdict(), "status": str(product.status.value)}
+                for product in response_list.products]
     response_dto: ListProductResponseDto = ListProductResponseDto(
-        products= [ProductBase(**product._asdict()) for product in response.products]
+        products=[ProductBase(**product) for product in response]
     )
     return response_dto
 
@@ -47,11 +49,13 @@ async def get_product_by_id(
     response_dto: FindProductByIdResponseDto = FindProductByIdResponseDto(**response._asdict())
     return response_dto
 
-@product_router.post("/", response_model=CreateProductResponseDto)
+@product_router.post("/", response_model=CreateProductResponseDto | str)
 async def create_product(
     request: CreateProductRequestDto,
     use_case: CreateProduct = Depends(create_product_use_case)
 ) -> CreateProductResponse:
+    if request.status not in ["New", "Used", "For parts"]:
+        return "Not a valid status value (New, Used, For parts)"
     response = use_case(CreateProductRequest(
         product_id=request.product_id, 
         user_id=request.user_id, 
