@@ -11,7 +11,6 @@ After understanding the business rules, one of the next steps for the design of 
 ```Txt
 📦backend
  ┣ 📂adapters
- ┃ ┣ 📂src
  ┃ ┗ 📂tests
  ┣ 📂api
  ┃ ┣ 📂src
@@ -19,8 +18,7 @@ After understanding the business rules, one of the next steps for the design of 
  ┃ ┃ ┗ 📂routes
  ┃ ┗ 📂tests
  ┣ 📂app
- ┃ ┣ 📂src
- ┃ ┗ 📂tests
+ ┃ ┗ 📂src
  ┣ 📂docs
  ┣ 📂factories
  ┃ ┣ 📂config
