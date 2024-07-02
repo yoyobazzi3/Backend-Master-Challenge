@@ -104,7 +104,14 @@ Once the app ir running you can access the the self documented API endpoint in t
 
 ## Challenge Tasks
 
-### 1 Create an endpoint to delete a product
+### For every task detailed here a new PR should be created.
+
+### 1 Create a CI for checking linter issues and run tests.
+
+#### Description
+This CI should run every time a New Pull Request is created.
+
+### 2 Create an endpoint to delete a product
 
 #### Description
 
@@ -118,7 +125,7 @@ The attributes that will have a product are defined in the ER Diagram
 
 A product that previously exists should be removed from the database.
 
-### 2 Create an endpoint to edit a product
+### 3 Create an endpoint to edit a product
 
 #### Description
 
@@ -140,7 +147,7 @@ A product should be saved in the database and the following attributes can be ch
 - Status
 - isAvailable
 
-### 3 Create an endpoint to filter a product
+### 4 Create an endpoint to filter a product
 
 #### Description
 
@@ -158,15 +165,26 @@ The products will be filtered by the “status” attribute defined in the ERD.
 
 The endpoint retrieves all the products that match a specific status.
 
-### 4 Add tests for the product routes
+### 5 Add tests for the product routes
 
 #### Description
 
 Add test for the enpoints created in the products_routes.py file.
 
-### 5 Add tests for the product use_cases
+### 6 Add tests for the product use_cases
 
 #### Description
 
 Add test for the product use_cases created in the app/src/usecases/product/"method" folder.
 
+### 7 Add tests for the SQLProductRepository class.
+
+#### Description
+
+Add test for the SQLProductRepository class located in adapters/src/repositories/sql/tables path
+
+### 8 Deploy the project
+
+#### Description
+
+Deploy the project using AWS. Add a CD to automate this process.
