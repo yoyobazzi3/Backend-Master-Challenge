@@ -5,4 +5,4 @@ from ....core.models._product import Product
 
 
 class ListProductResponse(BaseModel):
-  products: List[Product]
+    products: List[Product]

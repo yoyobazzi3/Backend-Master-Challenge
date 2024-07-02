@@ -13,14 +13,18 @@ class ProductBase(BaseModel):
     status: str
     is_available: bool
 
+
 class ListProductResponseDto(BaseModel):
     products: List[ProductBase]
+
 
 class FindProductByIdResponseDto(ProductBase):
     ...
 
+
 class CreateProductRequestDto(ProductBase):
     ...
+
 
 class CreateProductResponseDto(ProductBase):
     ...

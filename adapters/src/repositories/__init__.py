@@ -1,7 +1,7 @@
 from .sql import (
-  Connection,
-  SessionManager,
-  SQLConnection,
-  ProductSchema,
-  SQLProductRepository
+    Connection,
+    SessionManager,
+    SQLConnection,
+    ProductSchema,
+    SQLProductRepository,
 )

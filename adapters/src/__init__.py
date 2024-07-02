@@ -1,5 +1,1 @@
-from .repositories import (
-  Connection,
-  SessionManager,
-  SQLConnection
-)
+from .repositories import Connection, SessionManager, SQLConnection

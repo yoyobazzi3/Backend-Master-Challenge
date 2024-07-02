@@ -59,3 +59,7 @@ win_start:  ## Starts the debug of the program in windows environment
 	.venv\Scripts\activate.bat && \
 	.env && \
 	uvicorn main:app --reload
+
+.PHONY: lint
+lint: ## Starts linter tool
+	flake8 .
