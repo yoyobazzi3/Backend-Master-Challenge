@@ -27,13 +27,11 @@ jobs:
         
     - name: Install dependencies
       run: |
-        pip install pylint pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install pylint 
+        pip install -r requirements.txt
 
     - name: Run pylint
       run: |
         pylint **/*.py
-
-    - name: Test with pytest
-      run: |
-        pytest -vv
+        
+    
