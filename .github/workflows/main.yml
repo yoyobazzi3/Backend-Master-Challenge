@@ -1,0 +1,40 @@
+name: Lint and Test with pylint and pytest
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Update pip
+      run: |
+        pip install --upgrade pip
+        
+    - name: Install dependencies
+      run: |
+        pip install pylint pytest
+        pip install -r requirements.txt
+
+    - name: Run pylint
+      run: |
+        pylint **/*.py
+        
+    - name: Test with pytest
+      run: |
+        pytest -vv
+      working-directory: ./app
