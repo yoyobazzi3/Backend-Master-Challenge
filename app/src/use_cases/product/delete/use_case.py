@@ -5,11 +5,11 @@ from app.src.exceptions import ProductNotFoundException, ProductRepositoryExcept
 from app.src.core.models import Product
 from app.src.repositories import ProductRepository
 
-from .request import DeleteProductByIdRequest
-from .response import DeleteProductByIdResponse
+from .request import DeleteProductRequest
+from .response import DeleteProductResponse
 
 
-class DeleteProductById:
+class DeleteProduct:
     def __init__(self, product_repository: ProductRepository) -> None:
         self.product_repository = product_repository
 
@@ -19,14 +19,14 @@ class DeleteProductById:
         if product is None:
             raise ProductNotFoundException(product_id=request_entity_id)
 
-    def __call__(self, request: DeleteProductByIdRequest) -> DeleteProductByIdResponse:
+    def __call__(self, request: DeleteProductRequest) -> DeleteProductResponse:
         try:
             existing_product = self.product_repository.get_by_id(request.product_id)
             self.__verify_product_exists(
                 existing_product, request_entity_id=request.product_id
             )
-            self.product_repository.delete_by_id(request.product_id)
-            response = DeleteProductByIdResponse(success=True, message="Product deleted successfully")
+            self.product_repository.delete(request.product_id)
+            response = DeleteProduct(success=True, message="Product deleted successfully")
             return response
         except ProductRepositoryException as e:
             raise e
