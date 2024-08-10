@@ -28,3 +28,6 @@ class CreateProductRequestDto(ProductBase):
 
 class CreateProductResponseDto(ProductBase):
     ...
+
+class DeleteProductResponseDto(ProductBase):
+    ...

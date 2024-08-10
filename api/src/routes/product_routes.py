@@ -9,6 +9,9 @@ from app.src.use_cases import (
     CreateProduct,
     CreateProductResponse,
     CreateProductRequest,
+    DeleteProduct,
+    DeleteProductRequest,
+    DeleteProductResponse
 )
 from ..dtos import (
     ProductBase,
@@ -16,11 +19,13 @@ from ..dtos import (
     CreateProductRequestDto,
     CreateProductResponseDto,
     FindProductByIdResponseDto,
+    DeleteProductResponseDto,
 )
 from factories.use_cases import (
     list_product_use_case,
     find_product_by_id_use_case,
     create_product_use_case,
+    delete_product_use_case
 )
 
 product_router = APIRouter(prefix="/products")
@@ -75,3 +80,5 @@ async def create_product(
         **response._asdict()
     )
     return response_dto
+
+# @product_router.delete("/{product_id}", response_model=DeleteProductResponseDto | str)
