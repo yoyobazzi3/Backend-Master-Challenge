@@ -1,3 +1,4 @@
+from http.client import HTTPException
 from fastapi import APIRouter, Depends
 
 from app.src.use_cases import (
@@ -19,7 +20,7 @@ from ..dtos import (
     CreateProductRequestDto,
     CreateProductResponseDto,
     FindProductByIdResponseDto,
-    DeleteProductResponseDto,
+    # DeleteProductResponseDto,
 )
 from factories.use_cases import (
     list_product_use_case,
@@ -81,4 +82,12 @@ async def create_product(
     )
     return response_dto
 
-# @product_router.delete("/{product_id}", response_model=DeleteProductResponseDto | str)
+@product_router.delete("/{product_id}", response_model=DeleteProductResponse)
+async def delete_product(
+    product_id: str, use_case: DeleteProduct = Depends(delete_product_use_case)
+) -> DeleteProductResponse:
+    response = use_case(DeleteProductRequest(product_id=product_id))
+    if response:
+        return response
+    else:
+        raise HTTPException(status_code=404, detail="Product not found")

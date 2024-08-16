@@ -1,10 +1,8 @@
 from typing import Optional
 
 from app.src.exceptions import ProductNotFoundException, ProductRepositoryException
-
 from app.src.core.models import Product
 from app.src.repositories import ProductRepository
-
 from .request import DeleteProductRequest
 from .response import DeleteProductResponse
 
@@ -26,7 +24,7 @@ class DeleteProduct:
                 existing_product, request_entity_id=request.product_id
             )
             self.product_repository.delete(request.product_id)
-            response = DeleteProduct(success=True, message="Product deleted successfully")
+            response = DeleteProductResponse(message="Product deleted successfully")
             return response
         except ProductRepositoryException as e:
             raise e
